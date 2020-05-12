@@ -14,7 +14,6 @@ void logOut(context) async {
   prefs.setString("userEmail", null);
   prefs.setString(TOKEN, null);
   prefs.setString(KEEPMELOGGEDIN, null);
-  print(prefs.getString(KEEPMELOGGEDIN));
   makeRoutePage(context: context, pageRef: VerifyLogged());
 }
 

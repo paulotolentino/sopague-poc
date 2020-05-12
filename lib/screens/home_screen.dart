@@ -52,8 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
         });
         setState(() {
           userData = UserData.fromJson(jsonDecode(userDataSaved));
-          print("aqui => ");
-          print(json.decode(_notifications.body)[DATA][NOTIFY].length > 0);
           notifications = json.decode(_notifications.body)[DATA][NOTIFY].length > 0;
         });
       }

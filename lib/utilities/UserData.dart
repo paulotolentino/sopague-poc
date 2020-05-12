@@ -81,9 +81,17 @@ class IsMerchant {
   IsMerchant({this.status, this.data});
 
   factory IsMerchant.fromJson(Map<String, dynamic> parsedJson){
+    bool status = parsedJson['status'];
+    IsMerchantData data;
+    if(status){
+      data = IsMerchantData.fromJson(parsedJson['data']);
+    }
+    else {
+      data = IsMerchantData(isActive: false, isContract: false, isProduction: false, publicId: "");
+    }
     return IsMerchant(
       status: parsedJson['status'],
-      data: IsMerchantData.fromJson(parsedJson['data']),
+      data: data,
     );
   }
 }
@@ -103,7 +111,7 @@ class IsMerchantData {
 
   factory IsMerchantData.fromJson(Map<String, dynamic> parsedJson){
     return IsMerchantData(
-      publicId: parsedJson['public_id'],
+      publicId: parsedJson['public_id'] ,
       isActive: parsedJson['is_active'],
       isProduction: parsedJson['is_production'],
       isContract: parsedJson['is_contract'],
@@ -189,7 +197,7 @@ class TypeAccountData {
 
 class Balance {
   double real;
-  int bitcoin;
+  double bitcoin;
   String additional;
 
   Balance({
@@ -200,8 +208,8 @@ class Balance {
 
   factory Balance.fromJson(Map<String, dynamic> parsedJson){
     return Balance(
-      real: parsedJson['real'],
-      bitcoin: parsedJson['bitcoin'],
+      real: parsedJson['real'].toDouble(),
+      bitcoin: parsedJson['bitcoin'].toDouble(),
       additional: parsedJson['additional'],
     );
   }

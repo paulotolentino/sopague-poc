@@ -37,7 +37,6 @@ class _VerifyLoggedState extends State<VerifyLogged> {
     var _api = CreateAPI();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String _rememberMe = prefs.getString(KEEPMELOGGEDIN);
-    print(_rememberMe);
     final String email = prefs.getString(EMAIL);
     final String senha = prefs.getString(PASSWORD);
 
